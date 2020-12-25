@@ -1,0 +1,18 @@
+const path = require('path');
+
+module.exports = {
+  'config': path.resolve('database', 'config.json'),
+  'migrations-path': path.resolve('database', 'migrations'),
+  'seeders-path': path.resolve('database', 'seeders'),
+  'models-path': path.resolve('app', 'model'),
+};
+
+// env                在其中运行命令的环境
+// config             配置文件的路径
+// options-path       带有其他参数的 JSON 文件的路径
+
+// migrations-path    migrations文件夹的路径
+// seeders-path       seeders文件夹的路径
+// models-path        models文件夹的路径
+// url                要使用的数据库连接字符串. 替代使用 --config 文件
+// debug              可用时显示各种调试信息

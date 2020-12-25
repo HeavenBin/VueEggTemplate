@@ -1,0 +1,275 @@
+@charset "UTF-8";
+
+$fontFamily:      -apple-system, sans-serif;
+$fontCn:          tahoma,'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+$fontEn:          -apple-system,'BlinkMacSystemFont','Helvetica Neue', Helvetica,sans-serif;
+
+$fontTitle1:      0px;    // <h1>
+$fontTitle2:      0px;    // <h2>
+$fontTitle3:      0px;    // <h3>
+$fontTitle4:      0px;    // <h4>
+$fontTitle5:      0px;    // <h5>
+$fontTitle6:      0px;    // <h6>
+$fontLarge:       32px;   // 大号内容
+$fontContent:     14px;   // 默认内容  container
+$fontSmall:       12px;   // 小号内容
+$fontActivity:    28px;   // 活动文字大小
+$fontLineHeight:  3/2;    // 文字行高
+$letterSpacing:   normal; // 字符间距
+$wordSpacing:     normal; // 单词间距
+
+
+
+$colorTheme:             #FF3838 !default;             // 主题
+$colorBg:                #fff !default;                // 背景
+$colorBorder:            #dbdbdb !default;             // 边框
+$colorCover:             rgba(0,0,0,.4) !default;      // 遮罩层
+$colorContent:           #333 !default;       // 内容文字
+$colorInput:             #212121 !default;    // input文字
+$colorPlaceholder:       #666 !default;       // placeholder文字
+$colorDisabled:          #999 !default;       // disabled文字
+$colorLink:              #08c !default;       // 点击链接文字
+$colorVisited:           #800080 !default;    // 已点击链接文字
+
+$viewWidth:                  750px;          // 全屏宽度
+// box-shadow
+// transform
+// transition
+// animation
+
+$zIndexText:        700 !default;     // 文字遮盖::after/before
+$zIndexCover:       2000 !default;    // 遮盖阴影
+$zIndexPopup:       3000 !default;    // 弹窗
+$zIndexBest:        10000 !default;   // 最高层
+
+
+
+
+%ct-b{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin ct-p($direction: both) {
+  position: absolute;
+  @if $direction==both {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+	@else if $direction==x {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @else if $direction==y {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @content;
+}
+
+@mixin ct-f($direction: both) {
+  display: flex;
+
+  @if $direction==both {
+    justify-content: center;
+    align-items: center;
+  }
+
+  @else if $direction==x {
+    justify-content: center;
+  }
+
+  @else if $direction==y {
+    align-items: center;
+  }
+  @content;
+}
+
+@mixin fj($type: space-between){
+	display: flex;
+  justify-content: $type;
+  @content;
+}
+
+@mixin wh($width, $height:$width){
+	width: $width;
+  height: $height;
+  @content;
+}
+
+%inline-block{
+  // display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: bottom;
+  zoom: 1;
+  *display: inline;
+}
+
+@mixin font($size, $line-height, $family: $fontFamily) {
+	font: #{$size}/#{$line-height} $family;
+}
+
+@mixin sc($size, $color){
+	font-size: $size;
+	color: $color;
+}
+
+@mixin ell {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin ells($lines: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+%word-break{
+  // white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
+  @font-face {
+    font-weight: $weight;
+    font-style: $style;
+    font-family: quote($font-name);
+    src: url($file-name + '.eot');
+    src: url($file-name + '.eot?#iefix')         format('embedded-opentype'),
+         url($file-name + '.woff')               format('woff'),
+         url($file-name + '.ttf')                format('truetype'),
+         url($file-name + '.svg##{$font-name}')  format('svg');
+  }
+}
+
+@mixin bis($url,$width:100%,$height:100%) {
+	background-image: url($url);
+	background-repeat: no-repeat;
+	background-size: $width $height;
+}
+
+%fullscreen{
+	position:absolute;
+	top:0;
+  right:0;
+  bottom: 0;
+  left: 0;
+}
+
+%fix {
+  &::before,&::after { content: "";display: table; }
+  &::after { clear: both;}
+  *zoom: 1;
+}
+
+@mixin placeholder {
+  &.placeholder{
+    @content;
+  }
+  /* 使用webkit内核的浏览器 */
+  &::-webkit-input-placeholder{
+    @content;
+  }
+  /* Firefox版本4-18 */
+  &:-moz-placeholder{
+    @content;
+  }
+  /* Firefox版本19+ */
+  &::-moz-placeholder{
+    @content;
+  }
+  /* IE浏览器 */
+  &:-ms-input-placeholder{
+    @content;
+  }
+}
+
+@mixin triangle($borderWidth: 6px, $borderColor: #000, $direction: top) {
+  content: "";
+  height: 0;
+  width: 0;
+  overflow: hidden;
+
+  @if $direction==top {
+    border-bottom: $borderWidth solid $borderColor;
+    border-left: $borderWidth solid transparent;
+    border-right: $borderWidth solid transparent;
+  }
+
+  @else if $direction==right {
+    border-left: $borderWidth solid $borderColor;
+    border-top: $borderWidth solid transparent;
+    border-bottom: $borderWidth solid transparent;
+  }
+
+  @else if $direction==bottom {
+    border-top: $borderWidth solid $borderColor;
+    border-left: $borderWidth solid transparent;
+    border-right: $borderWidth solid transparent;
+  }
+
+  @else if $direction==left {
+    border-right: $borderWidth solid $borderColor;
+    border-top: $borderWidth solid transparent;
+    border-bottom: $borderWidth solid transparent;
+  }
+
+  @else if $direction==top-left {
+    border-top: $borderWidth solid $borderColor;
+    border-right: $borderWidth solid transparent;
+  }
+
+  @else if $direction==top-right {
+    border-top: $borderWidth solid $borderColor;
+    border-left: $borderWidth solid transparent;
+  }
+
+  @else if $direction==bottom-left {
+    border-bottom: $borderWidth solid $borderColor;
+    border-right: $borderWidth solid transparent;
+  }
+
+  @else if $direction==bottom-right {
+    border-bottom: $borderWidth solid $borderColor;
+    border-left: $borderWidth solid transparent;
+  }
+}
+
+@mixin v-arrow($direction: right, $borderWidth: 2px, $size: 10px) {
+  display: inline-block;
+  vertical-align: middle;
+  width: $size;
+  height: $size;
+
+  @if $direction==top {
+    border-top: $borderWidth solid currentColor;
+    border-right: $borderWidth solid currentColor;
+    transform: rotate(-45deg);
+  }
+
+  @else if $direction==right {
+    border-top: $borderWidth solid currentColor;
+    border-right: $borderWidth solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  @else if $direction==bottom {
+    border-left: $borderWidth solid currentColor;
+    border-bottom: $borderWidth solid currentColor;
+    transform: rotate(-45deg);
+  }
+
+  @if $direction==left {
+    border-left: $borderWidth solid currentColor;
+    border-bottom: $borderWidth solid currentColor;
+    transform: rotate(45deg);
+  }
+}
