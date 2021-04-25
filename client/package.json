@@ -8,7 +8,8 @@
     "lint": "vue-cli-service lint",
     "webpack": "rimraf ./webpack.js && vue inspect > webpack.js",
     "vuerc": "vue config",
-    "vueui": "vue ui"
+    "vueui": "vue ui",
+    "analyz": "npm_config_report=true npm run build"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -24,12 +25,15 @@
     "@vue/cli-service": "^3.8.0",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.1",
+    "compression-webpack-plugin": "^5.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "postcss-import": "^12.0.1",
     "postcss-url": "^8.0.0",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.46.0",
+    "webpack-bundle-analyzer": "^4.4.0"
   }
 }

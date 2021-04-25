@@ -23,19 +23,6 @@ module.exports = {
         deleteOriginalAssets: false,   // 是否删除原文件
       }))
     }
-    config.output.filename = '[name]---[contenthash].js'
-    config.optimization = {
-      runtimeChunk: 'single',  // 单独抽离出runtime代码
-      splitChunks: {           // 抽离出第三方插件，大大减少main体积
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-          },
-        },
-      },
-    }
   },
   chainWebpack: config => {
     // 更详细的修改

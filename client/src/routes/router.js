@@ -1,10 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
+// import User from "@/views/user";
+// import Main from "@/views/main";
+
 
 Vue.use(Router);
 
 const asyncView = view => () =>
-  import(/* webpackChunkName: "view-[request]" */ `@/views${view}`);
+  import(/* webpackChunkName: "v-[request]" */ `@/views${view}`);
 
 const routerInstance = new Router({
   mode: "history",
@@ -14,6 +17,12 @@ const routerInstance = new Router({
       path: "/user",
       name: "user",
       component: asyncView("/user"),
+      mete: { keepAlive: true }
+    },
+    {
+      path: "/main",
+      name: "main",
+      component: asyncView("/main"),
       mete: { keepAlive: true }
     },
     {

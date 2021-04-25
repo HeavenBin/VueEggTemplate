@@ -5,6 +5,7 @@ import store from "@/stores/store";
 import "@/assets/css/common.scss";
 // import "@/plugins/js/test";
 
+
 Vue.config.productionTip = false;
 
 // 暂时用节流方式来防抖
@@ -20,6 +21,7 @@ Vue.directive('noRepeat', {
     })
   }
 })
+
 
 new Vue({
   router,

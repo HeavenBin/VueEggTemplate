@@ -5,17 +5,11 @@ exports.security = {
     enable: false
   },
 }
-exports.cors = {
-  origin: '*',
-  allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
-};
-
-exports.view = {
-  defaultViewEngine: 'nunjucks',
-  mapping: {
-    '.tpl': 'nunjucks',
-  }
-}
+// exports.cors = {
+//   origin: '*',
+//   allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+// };
+exports.middleware = [ 'mycors','history' ]
 
 exports.sequelize = {
   dialect: 'mysql',
@@ -33,3 +27,14 @@ exports.redis = {
     db: 1
   }
 }
+
+exports.view = {
+  defaultViewEngine: 'nunjucks',
+  mapping: {
+    '.tpl': 'nunjucks',
+  }
+}
+
+exports.static = {
+  gzip: true
+};

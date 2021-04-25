@@ -84,7 +84,12 @@ export default {
       this.user = res.data;
     });
   },
-  mounted() {}
+  mounted() {
+    document.cookie='aaa=bbb'
+    document.cookie='ccc=ddd'
+    console.log(document.domain);
+    console.log(document.cookie);
+  }
 };
 </script>
 
