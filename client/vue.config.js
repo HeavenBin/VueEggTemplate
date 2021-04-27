@@ -23,7 +23,7 @@ module.exports = {
         deleteOriginalAssets: false,   // 是否删除原文件
       }))
     }
-    config.output.filename = '[name]---[contenthash].js'
+    config.output.filename = '[name].[hash].js'
     config.optimization = {
       runtimeChunk: 'single',  // 单独抽离出runtime代码
       splitChunks: {           // 抽离出第三方插件，大大减少main体积

@@ -26,8 +26,13 @@ const routerInstance = new Router({
       mete: { keepAlive: true }
     },
     {
+      path: "/upload",
+      name: "upload",
+      component: asyncView("/upload")
+    },
+    {
       path: "*",
-      redirect: "/user"
+      redirect: "/upload"
     }
   ]
 })
