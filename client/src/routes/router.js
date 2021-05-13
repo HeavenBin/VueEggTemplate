@@ -31,8 +31,13 @@ const routerInstance = new Router({
       component: asyncView("/upload")
     },
     {
+      path: "/mock",
+      name: "mock",
+      component: asyncView("/mock")
+    },
+    {
       path: "*",
-      redirect: "/upload"
+      redirect: "/mock"
     }
   ]
 })

@@ -1,11 +1,18 @@
 import Mock from 'mockjs';
 
-Mock.mock('/login', { //输出数据
-  'name': '@name', //随机生成姓名
-  //还可以自定义其他数据
+Mock.mock('/login', {
+  "boolean|1-2": true,
+
 });
-Mock.mock('/list', { //输出数据
-  'name': '@name', //随机生成姓名
+Mock.mock('/list', {
+  'name': '@name',
   'age|10-20': 10
-  //还可以自定义其他数据
+});
+
+Mock.mock('/post', function(options){
+  console.log(11111,options);
+  return {
+    'name': '@name',
+    'age|10-20': 10
+  }
 });

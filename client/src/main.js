@@ -5,6 +5,11 @@ import store from "@/stores/store";
 import "@/assets/css/common.scss";
 // import "@/plugins/js/test";
 
+import { add } from "haibin007";
+console.log(add(1,2));
+
+
+
 
 Vue.config.productionTip = false;
 
